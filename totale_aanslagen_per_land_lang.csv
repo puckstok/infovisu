@@ -1,0 +1,42 @@
+country,count,latitude,longitude,number,Country of asylum,Refugees under UNHCR's mandate
+Albania,9,41,20,0,Albania,5957
+Austria,8,47.33,13.33,1,Austria,852201
+Belarus,6,53,28,2,Belarus,15359
+Belgium,8,50.83,4,3,Belgium,405427
+Bosnia-Herzegovina,14,44,18
+Bulgaria,10,42.5,25,4,Bulgaria,123821
+Croatia,6,45.17,15.5,5,Croatia,104167
+Cyprus,9,35,33,6,Cyprus,53321
+Czech Republic,10,49.75,15.5,7,Czechia,42812
+Denmark,5,56,9,8,Denmark,744050
+Estonia,3,59,26,9,Estonia,1184
+Finland,5,64,26,10,Finland,220103
+France,18,46,2,11,France,3627670
+Germany,17,51,10.5,12,Germany,12778286
+Greece,18,39,22,13,Greece,167754
+Hungary,6,47,20,14,Hungary,108121
+Iceland,2,65,-18,15,Iceland,3132
+Ireland,13,53,-8,16,Ireland,124098
+Italy,17,42.83,12.83,17,Italy,1029433
+Kosovo,18,42.6026,20.9030, , , 
+Latvia,3,57,25, , , 
+Macedonia,12,41.83,22,21,North Macedonia,52784
+Malta,3,35.83,14.58,19,Malta,81366
+Moldova,5,47,29, , ,
+Montenegro,4,42,19, , , 
+Netherlands,13,52.5,5.75,20,Netherlands (Kingdom of the),1984341
+Norway,6,62,10,22,Norway,862486
+Poland,4,52,20,23,Poland,176056
+Portugal,1,39.5,-8,24,Portugal,10100
+Romania,1,46,25,24,Romania,34786
+Russia,18,60,100, , , 
+Serbia,5,44,21,25,Serbia and Kosovo: S/RES/1244 (1999),3252310
+Serbia-Montenegro,4,42.7087,19.3744, , , 
+Slovak Republic,2,48.6690,19.6990,26,Slovakia,9958
+Slovenia,1,46,15,27,Slovenia,16058
+Spain,17,40,-4,29,Spain,116506
+Sweden,12,62,15,28,Sweden,2338181
+Switzerland,7,47,8,29,Switzerland,1098739
+Ukraine,14,49,32,30,Ukraine,68118
+United Kingdom,18,54,-2,31,United Kingdom of Great Britain and Northern Ireland,4058913
+Yugoslavia,3,43.85,18.25, , , 
