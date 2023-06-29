@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gevaar of fabel &#8212; Data Story Project</title>
+    <title>Gevaar of fabel &#8212; Gevaar of fabel</title>
   
   
   
@@ -135,7 +135,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Data Story Project</p>
+    <p class="title logo__title">Gevaar of fabel</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -196,37 +196,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/MultiX-Amsterdam/data-story-example/blob/main/docs/docs/format.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -235,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MultiX-Amsterdam/data-story-example" target="_blank"
+      <li><a href="https://github.com/puckstok/infovisu" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Bronopslagplaats"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/MultiX-Amsterdam/data-story-example/issues/new?title=Issue%20on%20page%20%2Fdocs/format.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/puckstok/infovisu/issues/new?title=Issue%20on%20page%20%2Fdocs/format.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open een probleem"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -438,7 +407,12 @@ document.write(`
 <div class="section" id="introductie">
 <h2>Introductie<a class="headerlink" href="#introductie" title="Permalink to this headline">#</a></h2>
 <p>De vluchtelingencrisis is een van de meest controversiële onderwerpen in het publieke debat. Veel tegenstanders beweren dat de stijging van vluchtelingen binnen Europa aanzet tot verhoogde veiligheidsrisico’s, in het bijzonder meer terroristische aanslagen. In 2015 werd Parijs getroffen door een reeks aanslagen. Ondanks dat de terroristen Europese burgers waren werd de vluchtelingencrisis als oorzaak aangewezen (do Céu Pinto Arena, 2017). Door de aanhoudende conflicten  in Syrië, Afghanistan en Irak kwamen steeds meer burgers naar Europa in de hoop voor veiligheid. Hoewel dit voor een langere tijd speelde, werd er vanaf 2015 gesproken van een vluchtelingencrisis. Deze toename startte echter al in 2013, wat ook te zien is in de grafiek hieronder.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
@@ -477,6 +451,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
@@ -565,7 +540,12 @@ document.write(`
 </div>
 <div class="section" id="tweede-argument-eerste-perspectief">
 <h3>Tweede argument eerste perspectief<a class="headerlink" href="#tweede-argument-eerste-perspectief" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_per_jaar_per_land.csv&#39;</span><span class="p">)</span>
 <span class="n">df5</span> <span class="o">=</span> <span class="n">df4</span><span class="p">[</span><span class="n">df4</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2017</span><span class="p">)]</span>
@@ -611,6 +591,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 </div>
 </div>
@@ -627,7 +608,12 @@ document.write(`
 <div class="section" id="the-first-argument-of-your-second-perspective">
 <h3>The First Argument of Your Second Perspective<a class="headerlink" href="#the-first-argument-of-your-second-perspective" title="Permalink to this headline">#</a></h3>
 <p>x</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
@@ -693,6 +679,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4989/235509716.py:30: SettingWithCopyWarning:
 
@@ -916,7 +903,12 @@ The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0.
 <blockquote>
 <div><p>*Figure 6: x</p>
 </div></blockquote>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df10</span> <span class="o">=</span> <span class="n">df5</span><span class="p">[</span><span class="n">df5</span><span class="p">[</span><span class="s2">&quot;Country of asylum&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Netherlands (Kingdom of the)&#39;</span><span class="p">]</span>
 <span class="n">df10</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -958,6 +950,7 @@ The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0.
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 </div>
 </div>
@@ -1113,7 +1106,7 @@ x</p>
   <div class="footer-item">
     
 <p class="component-author">
-Door Your Team Number
+Door R2
 </p>
 
   </div>
