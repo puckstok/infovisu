@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Gevaar of fabel</title>
+    <title>Data Preprocessing &#8212; Gevaar of fabel</title>
   
   
   
@@ -60,7 +60,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Rough draft van preprocess ';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Final draft van preprocess ';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -220,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/puckstok/infovisu/issues/new?title=Issue%20on%20page%20%2Fdocs/Rough draft van preprocess .html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/puckstok/infovisu/issues/new?title=Issue%20on%20page%20%2Fdocs/Final draft van preprocess .html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open een probleem"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -250,7 +250,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/docs/Rough draft van preprocess .ipynb" target="_blank"
+      <li><a href="../_sources/docs/Final draft van preprocess .ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,9 +319,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -332,19 +330,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Data Preprocessing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Inhoud </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -354,7 +344,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-preprocessing">
+<h1>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">#</a></h1>
+<p>Student namen: Puck, Sally, Jelle, Issa</p>
+<p>Groep nummer: R2</p>
+<p>De volgende code is gebruikt om de datasets voor te bereiden in bestanden die gebruikt zijn voor de datastory.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#importeren relevanten bibliotheken</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
@@ -372,211 +367,66 @@ document.write(`
 
 <span class="c1">#Stap 1: Laad en filter de relevante datasets</span>
 <span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_eu.csv&#39;</span><span class="p">)</span>
+<span class="n">data_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;terrorism_eu.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country_txt&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s1">&#39;iyear&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">:</span> <span class="s1">&#39;Terrorist attacks&#39;</span><span class="p">})</span>
+<span class="n">data_lon_lat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;world_country_and_usa_states_latitude_and_longitude_values.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">})</span>
+
+<span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df1_ter</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">df1_ter</span><span class="p">[</span><span class="n">df1_ter</span><span class="p">[</span><span class="s1">&#39;region_txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Eastern Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;Western Europe&#39;</span><span class="p">])]</span>
+<span class="n">mask</span>
+<span class="n">df2_ter</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">iyear</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2017</span><span class="p">)]</span>
+<span class="n">df2_ter</span>
+<span class="n">df3_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df3_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;iyear&#39;</span><span class="p">)[</span><span class="s1">&#39;eventid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
+<span class="n">df4_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country_txt&#39;</span><span class="p">)[</span><span class="s1">&#39;eventid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
+<span class="n">df4_ter</span>
+<span class="n">df3_ter</span>
+
+<span class="n">df5</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
+<span class="n">df5</span>
+
 <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
 
-<span class="c1">#Stap 2: xxx</span>
-
-<span class="c1">#Stap 3: xxx</span>
-
-<span class="c1">#of.....</span>
-
-<span class="c1">#Stap 1: Laad de dataset van migranten in EU</span>
-<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_eu.csv&#39;</span><span class="p">)</span>
-
-<span class="c1">#Stap 2: Verwijder de data voor 1999</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1">#Stap 3: Check of de data is verwijderd</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
-
-
-<span class="c1">#of.....</span>
-
-<span class="c1">#Eerst hebben we x gedaan toen hebben y gedaan daarna konden we onrelevante dingen verwijderen. </span>
-
-<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_eu.csv&#39;</span><span class="p">)</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1">#Ben in de voorbeeld file bezig alles mooi erin te zetten maar dit is puur even rough laten zien wat </span>
-<span class="c1">#de opties zijn en welke de bedoeling is. </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>Year</th>
-      <th>Country of origin</th>
-      <th>Country of origin (ISO)</th>
-      <th>Country of asylum</th>
-      <th>Country of asylum (ISO)</th>
-      <th>Refugees under UNHCR's mandate</th>
-      <th>Asylum-seekers</th>
-      <th>IDPs of concern to UNHCR</th>
-      <th>Other people in need of international protection</th>
-      <th>Stateless persons</th>
-      <th>Host Community</th>
-      <th>Others of concern</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1036</th>
-      <td>1966</td>
-      <td>2000</td>
-      <td>Romania</td>
-      <td>ROU</td>
-      <td>Germany</td>
-      <td>DEU</td>
-      <td>0</td>
-      <td>32.0</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1037</th>
-      <td>1967</td>
-      <td>2000</td>
-      <td>Romania</td>
-      <td>ROU</td>
-      <td>Hungary</td>
-      <td>HUN</td>
-      <td>1318</td>
-      <td>15.0</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1038</th>
-      <td>1969</td>
-      <td>2000</td>
-      <td>Romania</td>
-      <td>ROU</td>
-      <td>Ireland</td>
-      <td>IRL</td>
-      <td>8</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1039</th>
-      <td>1970</td>
-      <td>2000</td>
-      <td>Romania</td>
-      <td>ROU</td>
-      <td>Italy</td>
-      <td>ITA</td>
-      <td>84</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1040</th>
-      <td>1971</td>
-      <td>2000</td>
-      <td>Romania</td>
-      <td>ROU</td>
-      <td>Netherlands (Kingdom of the)</td>
-      <td>NLD</td>
-      <td>228</td>
-      <td>40.0</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-      <td>-</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Jelle</span>
-
-<span class="c1">#Stap 1: Laad en filter de relevante datasets</span>
-<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_eu.csv&#39;</span><span class="p">)</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
-
-<span class="c1">#Stap 2: migranten totaal europa</span>
+<span class="c1">#Stap 2: Versimpel langere namen van landen om later toe te passen in de samenvoeging van datasets </span>
 <span class="n">migranten_totaal_europa</span> <span class="o">=</span> <span class="n">data_raw</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]]</span>
-
 <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Netherlands (Kingdom of the)&#39;</span><span class="p">:</span> <span class="s1">&#39;Netherlands&#39;</span><span class="p">})</span>
 <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;United Kingdom of Great Britain and Northern Ireland&#39;</span><span class="p">:</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">})</span>
 <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Serbia and Kosovo: S/RES/1244 (1999)&#39;</span><span class="p">:</span> <span class="s1">&#39;Serbia&#39;</span><span class="p">})</span>
-
 <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
 
-<span class="c1">#sum migranten totaal europa gegroept door jaar en land</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
-<span class="c1">#df2.to_csv(&#39;migranten_per_jaar_per_land.csv&#39;)</span>
-
-<span class="c1">#sum migranten totaal europa gegroept door jaar</span>
-<span class="n">df3</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
-<span class="c1">#df3.to_csv(&#39;migranten_per_jaar_europa.csv&#39;)</span>
-
-<span class="c1">#sum migranten totaal europa gegroept door land</span>
-<span class="n">df4</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
-<span class="c1">#df4.to_csv(&#39;migranten_per_land_totaal.csv&#39;)</span>
-
-<span class="c1">#longtitude en latitude landen</span>
-<span class="n">data_lon_lat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;world_country_and_usa_states_latitude_and_longitude_values.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">})</span>
-<span class="n">data_lon_lat</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_lon_lat</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Macedonia [FYROM]&#39;</span><span class="p">:</span> <span class="s1">&#39;North Macedonia&#39;</span><span class="p">})</span>
-<span class="n">data_lon_lat2</span> <span class="o">=</span> <span class="n">data_lon_lat</span><span class="p">[[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">]]</span>
-<span class="n">data_lon_lat2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1">#data terrorime en land van asiel</span>
-<span class="n">data_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;terrorism_eu.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country_txt&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s1">&#39;iyear&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">:</span> <span class="s1">&#39;Terrorist attacks&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Macedonia&#39;</span><span class="p">:</span> <span class="s1">&#39;North Macedonia&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Slovak Republic&#39;</span><span class="p">:</span> <span class="s1">&#39;Slovakia&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Serbia-Montenegro&#39;</span><span class="p">:</span> <span class="s1">&#39;Serbia&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Terrorist attacks&#39;</span><span class="p">]]</span>
 <span class="n">data_ter</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="c1">#mergede data van df</span>
+<span class="n">data_lon_lat</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_lon_lat</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Macedonia [FYROM]&#39;</span><span class="p">:</span> <span class="s1">&#39;North Macedonia&#39;</span><span class="p">})</span>
+<span class="n">data_lon_lat2</span> <span class="o">=</span> <span class="n">data_lon_lat</span><span class="p">[[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">]]</span>
+<span class="n">data_lon_lat2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#Stap 3: Maak een nieuwe dataframe </span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+
+<span class="n">df3</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+
+<span class="n">df4</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Refugees under UNHCR&#39;s mandate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
+
+<span class="n">df3_ter</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">df3_ter</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+
+<span class="c1">#Stap 4: voeg de data van terroristische aanslagen en aantal vluchtelingen samen </span>
 <span class="n">df_half</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data_lon_lat2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">)</span>
 <span class="n">df_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_half</span><span class="p">,</span> <span class="n">data_ter</span><span class="p">,</span>  <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df_full</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> 
 <span class="c1">#df_full.to_csv(&#39;test.csv&#39;)</span>
 
-<span class="c1">#map figuur </span>
+<span class="c1">#Stap 5: maak map figuur </span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_geo</span><span class="p">(</span><span class="n">df_full</span><span class="p">,</span> 
                      <span class="n">lat</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
                      <span class="n">lon</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span>
@@ -615,167 +465,26 @@ document.write(`
 
 <span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/d5/l26d_rb125nf0gsrglrqqnsw0000gn/T/ipykernel_91841/3193170447.py:11: SettingWithCopyWarning:
 
-
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-
-/var/folders/d5/l26d_rb125nf0gsrglrqqnsw0000gn/T/ipykernel_91841/3193170447.py:12: SettingWithCopyWarning:
-
-
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-
-/var/folders/d5/l26d_rb125nf0gsrglrqqnsw0000gn/T/ipykernel_91841/3193170447.py:13: SettingWithCopyWarning:
-
-
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Year Country of asylum  Refugees under UNHCR&#39;s mandate
-0    2000           Albania                             521
-1    2000           Austria                           15493
-2    2000           Belarus                             453
-3    2000           Belgium                           18821
-4    2000          Bulgaria                            1470
-..    ...               ...                             ...
-607  2017             Spain                           17541
-608  2017            Sweden                          240954
-609  2017       Switzerland                           93030
-610  2017           Ukraine                            3241
-611  2017    United Kingdom                          121821
-
-[612 rows x 3 columns]
-    Year  Refugees under UNHCR&#39;s mandate
-0   2000                         2310144
-1   2001                         2260823
-2   2002                         2292404
-3   2003                         2175223
-4   2004                         2053058
-5   2005                         1734871
-6   2006                         1593379
-7   2007                         1551624
-8   2008                         1578023
-9   2009                         1593630
-10  2010                         1561128
-11  2011                         1512698
-12  2012                         1502842
-13  2013                         1135961
-14  2014                         1254534
-15  2015                         1497563
-16  2016                         2071750
-17  2017                         2477489
-   Country of asylum  Refugees under UNHCR&#39;s mandate
-0            Albania                            2025
-1            Austria                          770125
-2            Belarus                           15098
-3            Belgium                          388680
-4           Bulgaria                          123279
-5            Croatia                           75793
-6             Cyprus                           53209
-7            Czechia                           41580
-8            Denmark                          675068
-9            Estonia                            1184
-10           Finland                          207237
-11            France                         3497948
-12           Germany                        11802786
-13            Greece                          161471
-14           Hungary                          103141
-15           Iceland                            2887
-16           Ireland                          121269
-17             Italy                         1023429
-18        Luxembourg                           35413
-19             Malta                           81095
-20       Netherlands                         1845708
-21   North Macedonia                           31584
-22            Norway                          819045
-23            Poland                          175119
-24          Portugal                           10100
-25           Romania                           33552
-26            Serbia                         2751047
-27          Slovakia                            9522
-28          Slovenia                           11678
-29             Spain                          116506
-30            Sweden                         2178677
-31       Switzerland                         1016466
-32           Ukraine                           65431
-33    United Kingdom                         3909992
-</pre></div>
-</div>
-<div class="output text_html"><iframe
-    scrolling="no"
-    width="970px"
-    height="670"
-    src="iframe_figures/figure_3.html"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Sally</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">df1</span>
-
-<span class="n">mask</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;region_txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Eastern Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;Western Europe&#39;</span><span class="p">])]</span>
-<span class="n">mask</span>
-
-<span class="n">df2</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">mask</span><span class="o">.</span><span class="n">iyear</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2017</span><span class="p">)]</span>
-<span class="n">df2</span>
-
-<span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-
-<span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;iyear&#39;</span><span class="p">)[</span><span class="s1">&#39;eventid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
-
-<span class="n">df4</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country_txt&#39;</span><span class="p">)[</span><span class="s1">&#39;eventid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
-<span class="n">df4</span>
-
-<span class="n">df3</span>
-
-<span class="n">df5</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
-<span class="n">df5</span>
-
-<span class="c1"># Totaal aantal aanslagen per jaar in Europa. </span>
-<span class="n">df3</span>
-<span class="c1">#df3.to_csv(&#39;aanslagen_per_jaar.csv&#39;, index=False, header=True)</span>
-
-<span class="c1"># Totaal aantal aanslagen tussen 2000 en 2017 in Europa.</span>
-<span class="nb">sum</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
-
-<span class="c1"># Aantal aanslagen per land per jaar in Europa.</span>
-<span class="n">df5</span>
-<span class="c1">#df6.to_csv(&#39;aanslagen_per_jaar_per_land.csv&#39;, index=False, header=True)</span>
-
-<span class="c1"># Totaal aantal aanslagen per land tussen 2000 en 2017 in Europa.</span>
-<span class="n">df4</span>
-<span class="c1">#df4.to_csv(&#39;totale_aanslagen_per_land.csv&#39;, index=False, header=True)</span>
+<span class="c1">#Stap 6: maak de nieuwe files voor de datastory </span>
+<span class="c1">#df2.to_csv(&#39;migranten_per_jaar_per_land.csv&#39;)</span>
+<span class="c1">#df3.to_csv(&#39;migranten_per_jaar_europa.csv&#39;)</span>
+<span class="c1">#df4.to_csv(&#39;migranten_per_land_totaal.csv&#39;)</span>
+<span class="c1">#df3_ter.to_csv(&#39;aanslagen_per_jaar.csv&#39;, index=False, header=True)</span>
+<span class="c1">#df4_ter.to_csv(&#39;totale_aanslagen_per_land.csv&#39;, index=False, header=True)</span>
+<span class="c1">#df5_ter.to_csv(&#39;aanslagen_per_jaar_per_land.csv&#39;, index=False, header=True)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#Sally</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;terrorism_eu.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country_txt&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s1">&#39;iyear&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">:</span> <span class="s1">&#39;Terrorist attacks&#39;</span><span class="p">})</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data_lon_lat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;world_country_and_usa_states_latitude_and_longitude_values.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">})</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.9/site-packages/pandas/io/parsers/readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
@@ -837,6 +546,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -878,20 +588,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Inhoud
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
