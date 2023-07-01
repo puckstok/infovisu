@@ -394,6 +394,8 @@ document.write(`
 <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Serbia and Kosovo: S/RES/1244 (1999)&#39;</span><span class="p">:</span> <span class="s1">&#39;Serbia&#39;</span><span class="p">})</span>
 <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
 
+<span class="n">populatie_eu</span> <span class="o">=</span> <span class="n">df1_ter</span> <span class="o">=</span> <span class="n">migranten_totaal_europa</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Macedonia&#39;</span><span class="p">:</span> <span class="s1">&#39;North Macedonia&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Slovak Republic&#39;</span><span class="p">:</span> <span class="s1">&#39;Slovakia&#39;</span><span class="p">})</span>
 <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ter</span><span class="p">[</span><span class="s1">&#39;Country of asylum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Serbia-Montenegro&#39;</span><span class="p">:</span> <span class="s1">&#39;Serbia&#39;</span><span class="p">})</span>
@@ -467,6 +469,7 @@ document.write(`
 <span class="c1"># df2.to_csv(&#39;migranten_per_jaar_per_land.csv&#39;)</span>
 <span class="c1"># df3.to_csv(&#39;migranten_per_jaar_europa.csv&#39;)</span>
 <span class="c1"># df4.to_csv(&#39;migranten_per_land_totaal.csv&#39;)</span>
+<span class="c1"># populatie_eu.to_csv(&#39;populatie_eu.csv&#39;)</span>
 <span class="c1"># df3_ter.to_csv(&#39;aanslagen_per_jaar.csv&#39;, index=False, header=True)</span>
 <span class="c1"># df4_ter.to_csv(&#39;totale_aanslagen_per_land.csv&#39;, index=False, header=True)</span>
 <span class="c1"># df5_ter.to_csv(&#39;aanslagen_per_jaar_per_land_per_groep.csv&#39;, index=False, header=True)</span>
