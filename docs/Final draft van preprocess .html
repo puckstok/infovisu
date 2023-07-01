@@ -147,10 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="preprocess.html">Data Preprocessing</a></li>
-</ul>
-
+        
     </div>
 </nav></div>
     </div>
@@ -372,7 +369,7 @@ document.write(`
 
 <span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
 <span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">df1_ter</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">df1_ter</span><span class="p">[</span><span class="n">df1_ter</span><span class="p">[</span><span class="s1">&#39;region_txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Eastern Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;Western Europe&#39;</span><span class="p">])]</span>
 <span class="n">mask</span>
@@ -384,8 +381,8 @@ document.write(`
 <span class="n">df4_ter</span>
 <span class="n">df3_ter</span>
 
-<span class="n">df5</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
-<span class="n">df5</span>
+<span class="n">df5_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span> <span class="p">:</span> <span class="s1">&#39;group&#39;</span><span class="p">})</span>
+<span class="n">df5_ter</span>
 
 <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
@@ -467,24 +464,25 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1">#Stap 6: maak de nieuwe files voor de datastory </span>
-<span class="c1">#df2.to_csv(&#39;migranten_per_jaar_per_land.csv&#39;)</span>
-<span class="c1">#df3.to_csv(&#39;migranten_per_jaar_europa.csv&#39;)</span>
-<span class="c1">#df4.to_csv(&#39;migranten_per_land_totaal.csv&#39;)</span>
-<span class="c1">#df3_ter.to_csv(&#39;aanslagen_per_jaar.csv&#39;, index=False, header=True)</span>
-<span class="c1">#df4_ter.to_csv(&#39;totale_aanslagen_per_land.csv&#39;, index=False, header=True)</span>
-<span class="c1">#df5_ter.to_csv(&#39;aanslagen_per_jaar_per_land.csv&#39;, index=False, header=True)</span>
+<span class="c1"># df2.to_csv(&#39;migranten_per_jaar_per_land.csv&#39;)</span>
+<span class="c1"># df3.to_csv(&#39;migranten_per_jaar_europa.csv&#39;)</span>
+<span class="c1"># df4.to_csv(&#39;migranten_per_land_totaal.csv&#39;)</span>
+<span class="c1"># df3_ter.to_csv(&#39;aanslagen_per_jaar.csv&#39;, index=False, header=True)</span>
+<span class="c1"># df4_ter.to_csv(&#39;totale_aanslagen_per_land.csv&#39;, index=False, header=True)</span>
+<span class="c1"># df5_ter.to_csv(&#39;aanslagen_per_jaar_per_land_per_groep.csv&#39;, index=False, header=True)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#voorbeeld laten zien in werkgroep </span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#Stap 1: Laad en filter de relevante datasets</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;migranten_eu.csv&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;terrorism_eu.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country_txt&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">,</span> <span class="s1">&#39;iyear&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">:</span> <span class="s1">&#39;Terrorist attacks&#39;</span><span class="p">})</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data_lon_lat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;world_country_and_usa_states_latitude_and_longitude_values.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Country of asylum&#39;</span><span class="p">})</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.9/site-packages/pandas/io/parsers/readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
@@ -541,7 +539,7 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
 <span class="g g-Whitespace">    </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
 
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;globalterrorismdb_0718dist.csv&#39;
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;migranten_eu.csv&#39;
 </pre></div>
 </div>
 </div>
