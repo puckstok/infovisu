@@ -146,51 +146,63 @@ Cell [0;32mIn[2], line 8[0m
 [1;32m      9[0m df_ter[38;5;241m.[39mhead()
 [1;32m     10[0m df1_ter [38;5;241m=[39m df_ter[38;5;241m.[39mgroupby([[38;5;124m'[39m[38;5;124miyear[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mregion_txt[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mcountry_txt[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mgname[39m[38;5;124m'[39m])[38;5;241m.[39mcount()[38;5;241m.[39mreset_index()
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:912[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
-[1;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
-[1;32m    900[0m     dialect,
-[1;32m    901[0m     delimiter,
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    209[0m     [38;5;28;01melse[39;00m:
+[1;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[0;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/_decorators.py:331[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    325[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    326[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    327[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39m_format_argument_list(allow_args)),
+[1;32m    328[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    329[0m         stacklevel[38;5;241m=[39mfind_stack_level(),
+[1;32m    330[0m     )
+[0;32m--> 331[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:950[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    935[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    936[0m     dialect,
+[1;32m    937[0m     delimiter,
 [0;32m   (...)[0m
-[1;32m    908[0m     dtype_backend[38;5;241m=[39mdtype_backend,
-[1;32m    909[0m )
-[1;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
-[0;32m--> 912[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
+[1;32m    946[0m     defaults[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mdelimiter[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m,[39m[38;5;124m"[39m},
+[1;32m    947[0m )
+[1;32m    948[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 950[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:583[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    580[0m     [38;5;28;01mreturn[39;00m parser
-[1;32m    582[0m [38;5;28;01mwith[39;00m parser:
-[0;32m--> 583[0m     [38;5;28;01mreturn[39;00m [43mparser[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mnrows[49m[43m)[49m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:611[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    608[0m     [38;5;28;01mreturn[39;00m parser
+[1;32m    610[0m [38;5;28;01mwith[39;00m parser:
+[0;32m--> 611[0m     [38;5;28;01mreturn[39;00m [43mparser[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mnrows[49m[43m)[49m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1704[0m, in [0;36mTextFileReader.read[0;34m(self, nrows)[0m
-[1;32m   1697[0m nrows [38;5;241m=[39m validate_integer([38;5;124m"[39m[38;5;124mnrows[39m[38;5;124m"[39m, nrows)
-[1;32m   1698[0m [38;5;28;01mtry[39;00m:
-[1;32m   1699[0m     [38;5;66;03m# error: "ParserBase" has no attribute "read"[39;00m
-[1;32m   1700[0m     (
-[1;32m   1701[0m         index,
-[1;32m   1702[0m         columns,
-[1;32m   1703[0m         col_dict,
-[0;32m-> 1704[0m     ) [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43m  [49m[38;5;66;43;03m# type: ignore[attr-defined][39;49;00m
-[1;32m   1705[0m [43m        [49m[43mnrows[49m
-[1;32m   1706[0m [43m    [49m[43m)[49m
-[1;32m   1707[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
-[1;32m   1708[0m     [38;5;28mself[39m[38;5;241m.[39mclose()
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1778[0m, in [0;36mTextFileReader.read[0;34m(self, nrows)[0m
+[1;32m   1771[0m nrows [38;5;241m=[39m validate_integer([38;5;124m"[39m[38;5;124mnrows[39m[38;5;124m"[39m, nrows)
+[1;32m   1772[0m [38;5;28;01mtry[39;00m:
+[1;32m   1773[0m     [38;5;66;03m# error: "ParserBase" has no attribute "read"[39;00m
+[1;32m   1774[0m     (
+[1;32m   1775[0m         index,
+[1;32m   1776[0m         columns,
+[1;32m   1777[0m         col_dict,
+[0;32m-> 1778[0m     ) [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43m  [49m[38;5;66;43;03m# type: ignore[attr-defined][39;49;00m
+[1;32m   1779[0m [43m        [49m[43mnrows[49m
+[1;32m   1780[0m [43m    [49m[43m)[49m
+[1;32m   1781[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[1;32m   1782[0m     [38;5;28mself[39m[38;5;241m.[39mclose()
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py:234[0m, in [0;36mCParserWrapper.read[0;34m(self, nrows)[0m
-[1;32m    232[0m [38;5;28;01mtry[39;00m:
-[1;32m    233[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mlow_memory:
-[0;32m--> 234[0m         chunks [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_reader[49m[38;5;241;43m.[39;49m[43mread_low_memory[49m[43m([49m[43mnrows[49m[43m)[49m
-[1;32m    235[0m         [38;5;66;03m# destructive to chunks[39;00m
-[1;32m    236[0m         data [38;5;241m=[39m _concatenate_chunks(chunks)
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py:230[0m, in [0;36mCParserWrapper.read[0;34m(self, nrows)[0m
+[1;32m    228[0m [38;5;28;01mtry[39;00m:
+[1;32m    229[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mlow_memory:
+[0;32m--> 230[0m         chunks [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_reader[49m[38;5;241;43m.[39;49m[43mread_low_memory[49m[43m([49m[43mnrows[49m[43m)[49m
+[1;32m    231[0m         [38;5;66;03m# destructive to chunks[39;00m
+[1;32m    232[0m         data [38;5;241m=[39m _concatenate_chunks(chunks)
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:812[0m, in [0;36mpandas._libs.parsers.TextReader.read_low_memory[0;34m()[0m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:808[0m, in [0;36mpandas._libs.parsers.TextReader.read_low_memory[0;34m()[0m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:873[0m, in [0;36mpandas._libs.parsers.TextReader._read_rows[0;34m()[0m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:866[0m, in [0;36mpandas._libs.parsers.TextReader._read_rows[0;34m()[0m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:848[0m, in [0;36mpandas._libs.parsers.TextReader._tokenize_rows[0;34m()[0m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:852[0m, in [0;36mpandas._libs.parsers.TextReader._tokenize_rows[0;34m()[0m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:859[0m, in [0;36mpandas._libs.parsers.TextReader._check_tokenize_status[0;34m()[0m
-
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:2025[0m, in [0;36mpandas._libs.parsers.raise_parser_error[0;34m()[0m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:1973[0m, in [0;36mpandas._libs.parsers.raise_parser_error[0;34m()[0m
 
 [0;31mParserError[0m: Error tokenizing data. C error: Expected 1 fields in line 26, saw 2
 
