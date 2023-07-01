@@ -138,7 +138,7 @@ fig.show()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;31mParserError[0m                               Traceback (most recent call last)
 Cell [0;32mIn[2], line 8[0m
 [1;32m      5[0m data_ter [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mterrorism_eu.csv[39m[38;5;124m'[39m)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mcountry_txt[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mCountry of asylum[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124miyear[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mYear[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mmultiple[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mTerrorist attacks[39m[38;5;124m'[39m})
 [1;32m      6[0m data_lon_lat [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mworld_country_and_usa_states_latitude_and_longitude_values.csv[39m[38;5;124m'[39m)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mcountry[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mCountry of asylum[39m[38;5;124m'[39m})
@@ -156,51 +156,44 @@ File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/si
 [1;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
 [0;32m--> 912[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:577[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    574[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
-[1;32m    576[0m [38;5;66;03m# Create the parser.[39;00m
-[0;32m--> 577[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
-[1;32m    579[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:583[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
 [1;32m    580[0m     [38;5;28;01mreturn[39;00m parser
+[1;32m    582[0m [38;5;28;01mwith[39;00m parser:
+[0;32m--> 583[0m     [38;5;28;01mreturn[39;00m [43mparser[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mnrows[49m[43m)[49m
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1407[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
-[1;32m   1404[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
-[1;32m   1406[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
-[0;32m-> 1407[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1704[0m, in [0;36mTextFileReader.read[0;34m(self, nrows)[0m
+[1;32m   1697[0m nrows [38;5;241m=[39m validate_integer([38;5;124m"[39m[38;5;124mnrows[39m[38;5;124m"[39m, nrows)
+[1;32m   1698[0m [38;5;28;01mtry[39;00m:
+[1;32m   1699[0m     [38;5;66;03m# error: "ParserBase" has no attribute "read"[39;00m
+[1;32m   1700[0m     (
+[1;32m   1701[0m         index,
+[1;32m   1702[0m         columns,
+[1;32m   1703[0m         col_dict,
+[0;32m-> 1704[0m     ) [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43m  [49m[38;5;66;43;03m# type: ignore[attr-defined][39;49;00m
+[1;32m   1705[0m [43m        [49m[43mnrows[49m
+[1;32m   1706[0m [43m    [49m[43m)[49m
+[1;32m   1707[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[1;32m   1708[0m     [38;5;28mself[39m[38;5;241m.[39mclose()
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1661[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
-[1;32m   1659[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
-[1;32m   1660[0m         mode [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m
-[0;32m-> 1661[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m [43mget_handle[49m[43m([49m
-[1;32m   1662[0m [43m    [49m[43mf[49m[43m,[49m
-[1;32m   1663[0m [43m    [49m[43mmode[49m[43m,[49m
-[1;32m   1664[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
-[1;32m   1665[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mcompression[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
-[1;32m   1666[0m [43m    [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mmemory_map[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
-[1;32m   1667[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[43mis_text[49m[43m,[49m
-[1;32m   1668[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding_errors[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mstrict[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m,[49m
-[1;32m   1669[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
-[1;32m   1670[0m [43m[49m[43m)[49m
-[1;32m   1671[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
-[1;32m   1672[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py:234[0m, in [0;36mCParserWrapper.read[0;34m(self, nrows)[0m
+[1;32m    232[0m [38;5;28;01mtry[39;00m:
+[1;32m    233[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mlow_memory:
+[0;32m--> 234[0m         chunks [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_reader[49m[38;5;241;43m.[39;49m[43mread_low_memory[49m[43m([49m[43mnrows[49m[43m)[49m
+[1;32m    235[0m         [38;5;66;03m# destructive to chunks[39;00m
+[1;32m    236[0m         data [38;5;241m=[39m _concatenate_chunks(chunks)
 
-File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/common.py:859[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
-[1;32m    854[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
-[1;32m    855[0m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
-[1;32m    856[0m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
-[1;32m    857[0m     [38;5;28;01mif[39;00m ioargs[38;5;241m.[39mencoding [38;5;129;01mand[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs[38;5;241m.[39mmode:
-[1;32m    858[0m         [38;5;66;03m# Encoding[39;00m
-[0;32m--> 859[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m
-[1;32m    860[0m [43m            [49m[43mhandle[49m[43m,[49m
-[1;32m    861[0m [43m            [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m,[49m
-[1;32m    862[0m [43m            [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mioargs[49m[38;5;241;43m.[39;49m[43mencoding[49m[43m,[49m
-[1;32m    863[0m [43m            [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
-[1;32m    864[0m [43m            [49m[43mnewline[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m    865[0m [43m        [49m[43m)[49m
-[1;32m    866[0m     [38;5;28;01melse[39;00m:
-[1;32m    867[0m         [38;5;66;03m# Binary mode[39;00m
-[1;32m    868[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:812[0m, in [0;36mpandas._libs.parsers.TextReader.read_low_memory[0;34m()[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'globalterrorismdb_0718dist.csv'
-FileNotFoundError: [Errno 2] No such file or directory: 'globalterrorismdb_0718dist.csv'
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:873[0m, in [0;36mpandas._libs.parsers.TextReader._read_rows[0;34m()[0m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:848[0m, in [0;36mpandas._libs.parsers.TextReader._tokenize_rows[0;34m()[0m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:859[0m, in [0;36mpandas._libs.parsers.TextReader._check_tokenize_status[0;34m()[0m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/parsers.pyx:2025[0m, in [0;36mpandas._libs.parsers.raise_parser_error[0;34m()[0m
+
+[0;31mParserError[0m: Error tokenizing data. C error: Expected 1 fields in line 26, saw 2
+
+ParserError: Error tokenizing data. C error: Expected 1 fields in line 26, saw 2
+
 
