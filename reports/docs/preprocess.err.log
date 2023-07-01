@@ -49,6 +49,8 @@ migranten_totaal_europa['Country of asylum'] = migranten_totaal_europa['Country 
 migranten_totaal_europa['Country of asylum'] = migranten_totaal_europa['Country of asylum'].replace({'Serbia and Kosovo: S/RES/1244 (1999)': 'Serbia'})
 migranten_totaal_europa.head(5) 
 
+populatie_eu = df1_ter = migranten_totaal_europa.groupby(['Year']).sum()
+
 data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Macedonia': 'North Macedonia'})
 data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Slovak Republic': 'Slovakia'})
 data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Serbia-Montenegro': 'Serbia'})
@@ -122,6 +124,7 @@ fig.show()
 # df2.to_csv('migranten_per_jaar_per_land.csv')
 # df3.to_csv('migranten_per_jaar_europa.csv')
 # df4.to_csv('migranten_per_land_totaal.csv')
+# populatie_eu.to_csv('populatie_eu.csv')
 # df3_ter.to_csv('aanslagen_per_jaar.csv', index=False, header=True)
 # df4_ter.to_csv('totale_aanslagen_per_land.csv', index=False, header=True)
 # df5_ter.to_csv('aanslagen_per_jaar_per_land_per_groep.csv', index=False, header=True)
