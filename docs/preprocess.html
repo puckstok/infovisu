@@ -375,7 +375,7 @@ document.write(`
 
 <span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 <span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;gname2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">df1_ter</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">df1_ter</span><span class="p">[</span><span class="n">df1_ter</span><span class="p">[</span><span class="s1">&#39;region_txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Eastern Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;Western Europe&#39;</span><span class="p">])]</span>
 <span class="n">mask</span>
@@ -387,7 +387,7 @@ document.write(`
 <span class="n">df4_ter</span>
 <span class="n">df3_ter</span>
 
-<span class="n">df5_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span> <span class="p">:</span> <span class="s1">&#39;group&#39;</span><span class="p">})</span>
+<span class="n">df5_ter</span> <span class="o">=</span> <span class="n">df2_ter</span><span class="p">[[</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span><span class="p">,</span> <span class="s1">&#39;gname2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;iyear&#39;</span> <span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span> <span class="p">:</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;eventid&#39;</span> <span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;gname2&#39;</span> <span class="p">:</span> <span class="s1">&#39;group&#39;</span><span class="p">})</span>
 <span class="n">df5_ter</span>
 
 <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1999</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -483,64 +483,119 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14285/2069658906.py:8: DtypeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14438/3697781554.py:8: DtypeWarning:
 
 Columns (4,6,35,36,37,49,52,76,77,83) have mixed types. Specify dtype option on import or set low_memory=False.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">df_ter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;globalterrorismdb_0718dist.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">df1_ter</span> <span class="o">=</span> <span class="n">df_ter</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;iyear&#39;</span><span class="p">,</span> <span class="s1">&#39;region_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;country_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;gname&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">df1_ter</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">df1_ter</span><span class="p">[</span><span class="n">df1_ter</span><span class="p">[</span><span class="s1">&#39;region_txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Eastern Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;Western Europe&#39;</span><span class="p">])]</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14438/3697781554.py:30: SettingWithCopyWarning:
 
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/frame.py:8402,</span> in <span class="ni">DataFrame.groupby</span><span class="nt">(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, dropna)</span>
-<span class="g g-Whitespace">   </span><span class="mi">8399</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;You have to supply one of &#39;by&#39; and &#39;level&#39;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">8400</span> <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_axis_number</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">8402</span> <span class="k">return</span> <span class="n">DataFrameGroupBy</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">8403</span>     <span class="n">obj</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8404</span>     <span class="n">keys</span><span class="o">=</span><span class="n">by</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8405</span>     <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8406</span>     <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8407</span>     <span class="n">as_index</span><span class="o">=</span><span class="n">as_index</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8408</span>     <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8409</span>     <span class="n">group_keys</span><span class="o">=</span><span class="n">group_keys</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8410</span>     <span class="n">squeeze</span><span class="o">=</span><span class="n">squeeze</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8411</span>     <span class="n">observed</span><span class="o">=</span><span class="n">observed</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8412</span>     <span class="n">dropna</span><span class="o">=</span><span class="n">dropna</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">8413</span> <span class="p">)</span>
 
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/groupby/groupby.py:965,</span> in <span class="ni">GroupBy.__init__</span><span class="nt">(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, mutated, dropna)</span>
-<span class="g g-Whitespace">    </span><span class="mi">962</span> <span class="k">if</span> <span class="n">grouper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="kn">from</span> <span class="nn">pandas.core.groupby.grouper</span> <span class="kn">import</span> <span class="n">get_grouper</span>
-<span class="ne">--&gt; </span><span class="mi">965</span>     <span class="n">grouper</span><span class="p">,</span> <span class="n">exclusions</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">get_grouper</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">966</span>         <span class="n">obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">967</span>         <span class="n">keys</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">968</span>         <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">969</span>         <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>         <span class="n">observed</span><span class="o">=</span><span class="n">observed</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="n">mutated</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mutated</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>         <span class="n">dropna</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dropna</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">976</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
-<span class="g g-Whitespace">    </span><span class="mi">977</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_get_axis_number</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
 
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/groupby/grouper.py:888,</span> in <span class="ni">get_grouper</span><span class="nt">(obj, key, axis, level, sort, observed, mutated, validate, dropna)</span>
-<span class="g g-Whitespace">    </span><span class="mi">886</span>         <span class="n">in_axis</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">gpr</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">gpr</span><span class="p">,</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">888</span>         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">gpr</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">889</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gpr</span><span class="p">,</span> <span class="n">Grouper</span><span class="p">)</span> <span class="ow">and</span> <span class="n">gpr</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">890</span>     <span class="c1"># Add key to exclusions</span>
-<span class="g g-Whitespace">    </span><span class="mi">891</span>     <span class="n">exclusions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gpr</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 
-<span class="ne">KeyError</span>: &#39;gname&#39;
+/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14438/3697781554.py:31: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14438/3697781554.py:32: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+/var/folders/sx/q7g013155lv0x3_h3xc9f1c80000gn/T/ipykernel_14438/3697781554.py:35: FutureWarning:
+
+The default value of numeric_only in DataFrameGroupBy.sum is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Year Country of asylum  Refugees under UNHCR&#39;s mandate
+0    2000           Albania                             521
+1    2000           Austria                           15493
+2    2000           Belarus                             453
+3    2000           Belgium                           18821
+4    2000          Bulgaria                            1470
+..    ...               ...                             ...
+607  2017             Spain                           17541
+608  2017            Sweden                          240954
+609  2017       Switzerland                           93030
+610  2017           Ukraine                            3241
+611  2017    United Kingdom                          121821
+
+[612 rows x 3 columns]
+    Year  Refugees under UNHCR&#39;s mandate
+0   2000                         2310144
+1   2001                         2260823
+2   2002                         2292404
+3   2003                         2175223
+4   2004                         2053058
+5   2005                         1734871
+6   2006                         1593379
+7   2007                         1551624
+8   2008                         1578023
+9   2009                         1593630
+10  2010                         1561128
+11  2011                         1512698
+12  2012                         1502842
+13  2013                         1135961
+14  2014                         1254534
+15  2015                         1497563
+16  2016                         2071750
+17  2017                         2477489
+   Country of asylum  Refugees under UNHCR&#39;s mandate
+0            Albania                            2025
+1            Austria                          770125
+2            Belarus                           15098
+3            Belgium                          388680
+4           Bulgaria                          123279
+5            Croatia                           75793
+6             Cyprus                           53209
+7            Czechia                           41580
+8            Denmark                          675068
+9            Estonia                            1184
+10           Finland                          207237
+11            France                         3497948
+12           Germany                        11802786
+13            Greece                          161471
+14           Hungary                          103141
+15           Iceland                            2887
+16           Ireland                          121269
+17             Italy                         1023429
+18        Luxembourg                           35413
+19             Malta                           81095
+20       Netherlands                         1845708
+21   North Macedonia                           31584
+22            Norway                          819045
+23            Poland                          175119
+24          Portugal                           10100
+25           Romania                           33552
+26            Serbia                         2751047
+27          Slovakia                            9522
+28          Slovenia                           11678
+29             Spain                          116506
+30            Sweden                         2178677
+31       Switzerland                         1016466
+32           Ukraine                           65431
+33    United Kingdom                         3909992
+</pre></div>
 </div>
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="970px"
+    height="670"
+    src="iframe_figures/figure_2.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </section>
 
