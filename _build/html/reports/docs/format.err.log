@@ -15,54 +15,88 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import plotly.graph_objs as go
-import plotly.express as px
-import pandas as pd
-import geopandas as gpd
-import matplotlib.pyplot as plt
+data_raw = pd.read_csv('migranten_eu.csv')
+data_raw.drop(data_raw.loc[data_raw['Year']==1999].index, inplace=True)
+data_raw.head(5)
 
-df = pd.read_csv('population_eu.csv')
-df2 = df[df.Year.between(2000, 2017)]
-df2 = df2.sort_values('Year')
+migranten_totaal_europa = data_raw[['Year', 'Country of asylum', "Refugees under UNHCR's mandate"]]
 
-colors = ['rgb(238, 75, 43)', 'rgb(252,245,245)', 'rgb(129, 133, 137)']
-fig = go.Figure()
+migranten_totaal_europa['Country of asylum'] = migranten_totaal_europa['Country of asylum'].replace({'Netherlands (Kingdom of the)': 'Netherlands'})
+migranten_totaal_europa['Country of asylum'] = migranten_totaal_europa['Country of asylum'].replace({'United Kingdom of Great Britain and Northern Ireland': 'United Kingdom'})
+migranten_totaal_europa['Country of asylum'] = migranten_totaal_europa['Country of asylum'].replace({'Serbia and Kosovo: S/RES/1244 (1999)': 'Serbia'})
 
-fig.add_trace(go.Scatter(
-    x=df2["Refugees under UNHCR's mandate"],
-    y=df2['Year'],
-    mode='markers',
-    marker=dict(
-        color='rgb(238, 75, 43)',
-        size=8,
-        symbol='circle', 
-        line=dict(width=0) 
-    ),
-    name="Refugees",
-))
+migranten_totaal_europa.head(5)
 
-fig.update_layout(
-    title='Aantal vluchtelingen in Europa',
-    yaxis=dict(type='category', categoryorder='array', categoryarray=df2['Year'].tolist()[::-1]), 
-    xaxis=dict(range=[0, 22000000], title="Vluchtelingen onder UNHCR's mandate"), 
-    yaxis_title='Jaar',
-    width=800, 
-    height=800,
-    plot_bgcolor='rgb(252,245,245)',
+df2 = migranten_totaal_europa.groupby(['Year','Country of asylum'], as_index=False)["Refugees under UNHCR's mandate"].sum()
+#df2.to_csv('migranten_per_jaar_per_land.csv')
+
+df3 = migranten_totaal_europa.groupby(['Year'], as_index=False)["Refugees under UNHCR's mandate"].sum()
+#df3.to_csv('migranten_per_jaar_europa.csv')
+
+df4 = migranten_totaal_europa.groupby(['Country of asylum'], as_index=False)["Refugees under UNHCR's mandate"].sum()
+#df4.to_csv('migranten_per_land_totaal.csv')
+
+data_lon_lat = pd.read_csv('world_country_and_usa_states_latitude_and_longitude_values.csv').rename(columns={'country': 'Country of asylum'})
+data_lon_lat['Country of asylum'] = data_lon_lat['Country of asylum'].replace({'Macedonia [FYROM]': 'North Macedonia'})
+data_lon_lat2 = data_lon_lat[['latitude', 'longitude', 'Country of asylum']]
+data_lon_lat2.head(5)
+
+data_ter = pd.read_csv('terrorism_eu.csv').rename(columns={'country_txt': 'Country of asylum', 'iyear': 'Year', 'multiple': 'Terrorist attacks'})
+data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Macedonia': 'North Macedonia'})
+data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Slovak Republic': 'Slovakia'})
+data_ter['Country of asylum'] = data_ter['Country of asylum'].replace({'Serbia-Montenegro': 'Serbia'})
+data_ter = data_ter[['Country of asylum', 'Year', 'Terrorist attacks']]
+data_ter.head(5)
+
+df_half = df2.merge(data_lon_lat2, on='Country of asylum')
+df_full = pd.merge(df_half, data_ter,  how='left', left_on=['Country of asylum','Year'], right_on = ['Country of asylum','Year']).fillna(0)
+df_full.head(500)
+#df_full.to_csv('test.csv')
+
+fig_ter = px.scatter_geo(df_full, 
+                     lat='latitude',
+                     lon='longitude',
+                     color="Terrorist attacks",
+                     color_continuous_scale=px.colors.sequential.OrRd,
+                     height=650,
+                     width=950,
+                     hover_name="Country of asylum",
+                     hover_data={
+                                "Terrorist attacks":True,
+                                "latitude":False, 
+                                "longitude":False,
+                                },
+                     projection="natural earth",
+                     scope="europe",
+                     size=df_full["Year"],
+                     size_max=10,
+                     animation_frame="Year",
+                    )
+
+fig_ter.update_geos(
+    visible=True, 
+    resolution=50,
+    showcountries=True, 
+    countrycolor="whitesmoke",
+    bgcolor='whitesmoke',
+    landcolor='#26a783',
 )
 
-fig.show()
+fig_ter.update_layout(
+    title='Terrorist Attacks in Europe between 2000 and 2017',
+)
+
+fig_ter.update_traces(marker=dict(line=dict(width=0.5, color='black')))
+fig_ter.show()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[2], line 4[0m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mplotly[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexpress[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpx[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[0;32m----> 4[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
-[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[1;32m      7[0m df [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mpopulation_eu.csv[39m[38;5;124m'[39m)
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 1[0m
+[0;32m----> 1[0m data_raw [38;5;241m=[39m [43mpd[49m[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mmigranten_eu.csv[39m[38;5;124m'[39m)
+[1;32m      2[0m data_raw[38;5;241m.[39mdrop(data_raw[38;5;241m.[39mloc[data_raw[[38;5;124m'[39m[38;5;124mYear[39m[38;5;124m'[39m][38;5;241m==[39m[38;5;241m1999[39m][38;5;241m.[39mindex, inplace[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[1;32m      3[0m data_raw[38;5;241m.[39mhead([38;5;241m5[39m)
 
-[0;31mModuleNotFoundError[0m: No module named 'geopandas'
+[0;31mNameError[0m: name 'pd' is not defined
 
