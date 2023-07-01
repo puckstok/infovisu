@@ -130,13 +130,12 @@ fig.show()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-Cell [0;32mIn[2], line 4[0m
-[1;32m      1[0m [38;5;66;03m#voorbeeld laten zien in werkgroep [39;00m
-[1;32m      2[0m 
-[1;32m      3[0m [38;5;66;03m#Stap 1: Laad en filter de relevante datasets[39;00m
-[0;32m----> 4[0m data_raw [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mmigranten_eu.csv[39;49m[38;5;124;43m'[39;49m[43m)[49m
+Cell [0;32mIn[2], line 8[0m
 [1;32m      5[0m data_ter [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mterrorism_eu.csv[39m[38;5;124m'[39m)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mcountry_txt[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mCountry of asylum[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124miyear[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mYear[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mmultiple[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mTerrorist attacks[39m[38;5;124m'[39m})
 [1;32m      6[0m data_lon_lat [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124mworld_country_and_usa_states_latitude_and_longitude_values.csv[39m[38;5;124m'[39m)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mcountry[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mCountry of asylum[39m[38;5;124m'[39m})
+[0;32m----> 8[0m df_ter [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mglobalterrorismdb_0718dist.csv[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mlatin-1[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m      9[0m df_ter[38;5;241m.[39mhead()
+[1;32m     10[0m df1_ter [38;5;241m=[39m df_ter[38;5;241m.[39mgroupby([[38;5;124m'[39m[38;5;124miyear[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mregion_txt[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mcountry_txt[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mgname[39m[38;5;124m'[39m])[38;5;241m.[39mcount()[38;5;241m.[39mreset_index()
 
 File [0;32m~/miniconda3/envs/jupyterbook/lib/python3.9/site-packages/pandas/io/parsers/readers.py:912[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
 [1;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
@@ -193,5 +192,5 @@ File [0;32m~/miniconda3/envs/jupyterbook/lib/python3.9/site-packages/pandas/io/
 [1;32m    867[0m         [38;5;66;03m# Binary mode[39;00m
 [1;32m    868[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'migranten_eu.csv'
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'globalterrorismdb_0718dist.csv'
 
